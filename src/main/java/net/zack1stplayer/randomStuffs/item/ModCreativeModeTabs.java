@@ -19,7 +19,7 @@ public class ModCreativeModeTabs {
     public static final Supplier<CreativeModeTab> RANDOMSTUFFS_TAB = CREATIVE_MODE_TAB.register("randomstuffs_tab",
             () -> CreativeModeTab.builder()
                     .icon(() -> new ItemStack(ModItems.TEST_ITEM.get()))
-                    .withTabsBefore(CreativeModeTabs.COMBAT)
+                    .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
                     .title(Component.translatable("creativetab.randomstuffs.items"))
                     .displayItems(((itemDisplayParameters, output) -> {
                         output.accept(ModItems.TEST_ITEM);
