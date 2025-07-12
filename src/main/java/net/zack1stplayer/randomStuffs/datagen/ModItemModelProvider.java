@@ -15,5 +15,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         basicItem(ModItems.TEST_ITEM.get());
         basicItem(ModItems.EXAMPLE_ITEM.get());
+
+        basicItem(ModItems.CHISEL.get());
     }
 }

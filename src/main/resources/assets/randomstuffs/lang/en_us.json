@@ -6,6 +6,8 @@
 
   "item.randomstuffs.example_item": "Example Item",
 
+  "item.randomstuffs.chisel": "Chisel",
+
   "examplemod.configuration.title": "Example Mod Configs",
   "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
   "examplemod.configuration.section.examplemod.common.toml.title": "Example Mod Configs",
