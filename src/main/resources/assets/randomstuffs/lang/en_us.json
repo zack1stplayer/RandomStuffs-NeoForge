@@ -12,5 +12,13 @@
   "examplemod.configuration.items": "Item List",
   "examplemod.configuration.logDirtBlock": "Log Dirt Block",
   "examplemod.configuration.magicNumberIntroduction": "Magic Number Text",
-  "examplemod.configuration.magicNumber": "Magic Number"
+  "examplemod.configuration.magicNumber": "Magic Number",
+
+  "randomstuffs.configuration.title": "Random Stuffs Configs",
+  "randomstuffs.configuration.section.randomstuffs.common.toml": "Random Stuffs Configs",
+  "randomstuffs.configuration.section.randomstuffs.common.toml.title": "Random Stuffs Configs",
+  "randomstuffs.configuration.items": "Item List",
+  "randomstuffs.configuration.logDirtBlock": "Log Dirt Block",
+  "randomstuffs.configuration.magicNumberIntroduction": "Magic Number Text",
+  "randomstuffs.configuration.magicNumber": "Magic Number"
 }
