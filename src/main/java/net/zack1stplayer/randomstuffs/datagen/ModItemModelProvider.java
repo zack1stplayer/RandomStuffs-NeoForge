@@ -1,10 +1,10 @@
-package net.zack1stplayer.randomStuffs.datagen;
+package net.zack1stplayer.randomstuffs.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.zack1stplayer.randomStuffs.RandomStuffs;
-import net.zack1stplayer.randomStuffs.item.ModItems;
+import net.zack1stplayer.randomstuffs.RandomStuffs;
+import net.zack1stplayer.randomstuffs.item.ModItems;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {

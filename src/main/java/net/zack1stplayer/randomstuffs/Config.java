@@ -1,6 +1,4 @@
-package net.zack1stplayer.randomStuffs;
-
-import java.util.List;
+package net.zack1stplayer.randomstuffs;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;

@@ -1,4 +1,4 @@
-package net.zack1stplayer.randomStuffs.item.custom;
+package net.zack1stplayer.randomstuffs.item.custom;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -10,7 +10,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.zack1stplayer.randomStuffs.block.ModBlocks;
+import net.zack1stplayer.randomstuffs.block.ModBlocks;
 
 import java.util.Map;
 

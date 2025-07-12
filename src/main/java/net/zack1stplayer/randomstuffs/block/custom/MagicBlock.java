@@ -1,4 +1,4 @@
-package net.zack1stplayer.randomStuffs.block.custom;
+package net.zack1stplayer.randomstuffs.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.zack1stplayer.randomStuffs.item.ModItems;
+import net.zack1stplayer.randomstuffs.item.ModItems;
 
 public class MagicBlock extends Block {
     public MagicBlock(Properties properties) {
