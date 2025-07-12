@@ -15,6 +15,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.TEST_BLOCK);
+        blockWithItem(ModBlocks.MAGIC_BLOCK);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {

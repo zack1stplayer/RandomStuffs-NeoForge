@@ -1,12 +1,13 @@
 {
   "item.randomstuffs.test_item": "Test Item",
-  "block.randomstuffs.test_block": "Test Block",
+  "item.randomstuffs.chisel": "Chisel",
 
-  "creativetab.randomstuffs.items": "Random Stuffs",
+  "block.randomstuffs.test_block": "Test Block",
+  "block.randomstuffs.magic_block": "Magic Block",
 
   "item.randomstuffs.example_item": "Example Item",
 
-  "item.randomstuffs.chisel": "Chisel",
+  "creativetab.randomstuffs.items": "Random Stuffs",
 
   "examplemod.configuration.title": "Example Mod Configs",
   "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",

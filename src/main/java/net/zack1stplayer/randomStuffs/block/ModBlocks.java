@@ -10,6 +10,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zack1stplayer.randomStuffs.RandomStuffs;
+import net.zack1stplayer.randomStuffs.block.custom.MagicBlock;
 import net.zack1stplayer.randomStuffs.item.ModItems;
 
 import java.util.function.Supplier;
@@ -22,6 +23,14 @@ public class ModBlocks {
                     .strength(1.5f,6.0f)
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.AMETHYST)
+                    .mapColor(MapColor.COLOR_MAGENTA)
+            ));
+
+    public static final DeferredBlock<Block> MAGIC_BLOCK = registerBlock("magic_block",
+            () -> new MagicBlock(BlockBehaviour.Properties.of()
+                    .strength(2f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST_CLUSTER)
                     .mapColor(MapColor.COLOR_MAGENTA)
             ));
 
