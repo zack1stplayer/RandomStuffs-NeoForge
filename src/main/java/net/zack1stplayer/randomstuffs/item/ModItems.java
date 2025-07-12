@@ -1,12 +1,12 @@
-package net.zack1stplayer.randomStuffs.item;
+package net.zack1stplayer.randomstuffs.item;
 
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.zack1stplayer.randomStuffs.RandomStuffs;
-import net.zack1stplayer.randomStuffs.item.custom.ChiselItem;
+import net.zack1stplayer.randomstuffs.RandomStuffs;
+import net.zack1stplayer.randomstuffs.item.custom.ChiselItem;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(RandomStuffs.MOD_ID);

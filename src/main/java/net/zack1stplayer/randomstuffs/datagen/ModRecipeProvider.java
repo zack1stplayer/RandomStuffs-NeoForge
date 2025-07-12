@@ -1,13 +1,13 @@
-package net.zack1stplayer.randomStuffs.datagen;
+package net.zack1stplayer.randomstuffs.datagen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
-import net.zack1stplayer.randomStuffs.RandomStuffs;
-import net.zack1stplayer.randomStuffs.block.ModBlocks;
-import net.zack1stplayer.randomStuffs.item.ModItems;
+import net.zack1stplayer.randomstuffs.RandomStuffs;
+import net.zack1stplayer.randomstuffs.block.ModBlocks;
+import net.zack1stplayer.randomstuffs.item.ModItems;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

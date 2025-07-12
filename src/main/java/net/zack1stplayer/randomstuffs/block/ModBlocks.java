@@ -1,4 +1,4 @@
-package net.zack1stplayer.randomStuffs.block;
+package net.zack1stplayer.randomstuffs.block;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -9,9 +9,9 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.zack1stplayer.randomStuffs.RandomStuffs;
-import net.zack1stplayer.randomStuffs.block.custom.MagicBlock;
-import net.zack1stplayer.randomStuffs.item.ModItems;
+import net.zack1stplayer.randomstuffs.RandomStuffs;
+import net.zack1stplayer.randomstuffs.block.custom.MagicBlock;
+import net.zack1stplayer.randomstuffs.item.ModItems;
 
 import java.util.function.Supplier;
 

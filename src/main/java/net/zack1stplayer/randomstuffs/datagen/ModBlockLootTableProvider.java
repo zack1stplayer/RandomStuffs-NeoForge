@@ -1,11 +1,11 @@
-package net.zack1stplayer.randomStuffs.datagen;
+package net.zack1stplayer.randomstuffs.datagen;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
-import net.zack1stplayer.randomStuffs.block.ModBlocks;
+import net.zack1stplayer.randomstuffs.block.ModBlocks;
 
 import java.util.Set;
 

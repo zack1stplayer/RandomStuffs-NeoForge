@@ -1,4 +1,4 @@
-package net.zack1stplayer.randomStuffs;
+package net.zack1stplayer.randomstuffs;
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.ModContainer;

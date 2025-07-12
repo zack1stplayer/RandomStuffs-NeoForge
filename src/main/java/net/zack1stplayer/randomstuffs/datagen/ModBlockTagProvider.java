@@ -1,13 +1,12 @@
-package net.zack1stplayer.randomStuffs.datagen;
+package net.zack1stplayer.randomstuffs.datagen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.zack1stplayer.randomStuffs.RandomStuffs;
-import net.zack1stplayer.randomStuffs.block.ModBlocks;
-import org.jetbrains.annotations.NotNull;
+import net.zack1stplayer.randomstuffs.RandomStuffs;
+import net.zack1stplayer.randomstuffs.block.ModBlocks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
