@@ -11,6 +11,7 @@ import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
+import net.zack1stplayer.randomstuffs.datagen.create.ModCreateRecipeProvider;
 
 import java.util.Collections;
 import java.util.List;
@@ -32,6 +33,9 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new ModDataMapProvider(packOutput, lookupProvider));
 
         generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput, lookupProvider));
+        if (event.includeServer()) {
+            ModCreateRecipeProvider.registerAllProcessing(generator, packOutput, lookupProvider);
+        }
 
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
