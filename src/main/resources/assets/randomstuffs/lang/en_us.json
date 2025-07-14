@@ -1,6 +1,7 @@
 {
   "item.randomstuffs.test_item": "Test Item",
   "item.randomstuffs.chisel": "Chisel",
+  "item.randomstuffs.charged_coal": "Charged Coal",
 
   "block.randomstuffs.test_block": "Test Block",
   "block.randomstuffs.magic_block": "Magic Block",
