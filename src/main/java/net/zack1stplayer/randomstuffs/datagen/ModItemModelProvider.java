@@ -17,5 +17,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.EXAMPLE_ITEM.get());
 
         basicItem(ModItems.CHISEL.get());
+        basicItem(ModItems.CHARGED_COAL.get());
     }
 }

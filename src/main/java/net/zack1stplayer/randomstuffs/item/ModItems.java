@@ -21,8 +21,12 @@ public class ModItems {
     );
 
 
-    public static final DeferredItem<Item> CHISEL = ITEMS.register("chisel",
-            () -> new ChiselItem(new Item.Properties().durability(150))
+    public static final DeferredItem<Item> CHISEL = ITEMS.registerItem("chisel",
+            ChiselItem::new, new Item.Properties().durability(150)
+    );
+
+    public static final DeferredItem<Item> CHARGED_COAL = ITEMS.registerItem("charged_coal",
+            Item::new, new Item.Properties().fireResistant()
     );
 
 

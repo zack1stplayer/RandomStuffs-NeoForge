@@ -25,6 +25,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.TEST_ITEM);
                         output.accept(ModItems.EXAMPLE_ITEM);
                         output.accept(ModItems.CHISEL);
+                        output.accept(ModItems.CHARGED_COAL);
                         output.accept(ModBlocks.TEST_BLOCK);
                         output.accept(ModBlocks.MAGIC_BLOCK);
                     }))
