@@ -3,8 +3,10 @@ package net.zack1stplayer.randomstuffs.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
 import net.zack1stplayer.randomstuffs.block.ModBlocks;
 import net.zack1stplayer.randomstuffs.item.ModItems;
@@ -29,6 +31,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_test_item", has(ModItems.TEST_ITEM))
                 .save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.LAMP_BLOCK.get())
+                .pattern(" T ")
+                .pattern("TiT")
+                .pattern(" T ")
+                .define('T', ModItems.TEST_ITEM.get())
+                .define('i', Items.TORCH)
+                .unlockedBy("has_test_item", has(ModItems.TEST_ITEM))
+                .save(recipeOutput);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TEST_ITEM.get(), 8)
                 .requires(ModBlocks.TEST_BLOCK)
                 .unlockedBy("has_test_block", has(ModBlocks.TEST_BLOCK))
@@ -36,6 +47,12 @@ public class ModRecipeProvider extends RecipeProvider {
 
         oreSmelting(recipeOutput, TEST_SMELTABLES, RecipeCategory.MISC, ModItems.EXAMPLE_ITEM.get(), 0.25f, 200, "test");
         oreBlasting(recipeOutput, TEST_SMELTABLES, RecipeCategory.MISC, ModItems.EXAMPLE_ITEM.get(), 0.25f, 100, "test");
+
+        stairBuilder(ModBlocks.HONEYCOMB_STAIRS.get(), Ingredient.of(Blocks.HONEYCOMB_BLOCK))
+                .group("honeycomb").unlockedBy("has_honeycomb", has(Blocks.HONEYCOMB_BLOCK)).save(recipeOutput);
+        slab(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.HONEYCOMB_SLAB.get(), Blocks.HONEYCOMB_BLOCK);
+        trapdoorBuilder(ModBlocks.HONEYCOMB_TRAPDOOR.get(), Ingredient.of(Blocks.HONEYCOMB_BLOCK))
+                .group("honeycomb").unlockedBy("has_honeycomb", has(Blocks.HONEYCOMB_BLOCK)).save(recipeOutput);
     }
 
 

@@ -28,6 +28,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CHARGED_COAL);
                         output.accept(ModBlocks.TEST_BLOCK);
                         output.accept(ModBlocks.MAGIC_BLOCK);
+                        output.accept(ModBlocks.LAMP_BLOCK);
+                        output.accept(ModBlocks.HONEYCOMB_STAIRS);
+                        output.accept(ModBlocks.HONEYCOMB_SLAB);
+                        output.accept(ModBlocks.HONEYCOMB_TRAPDOOR);
                     }))
                     .build()
     );

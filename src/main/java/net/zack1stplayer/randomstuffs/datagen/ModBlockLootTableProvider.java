@@ -27,8 +27,13 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ModBlocks.TEST_BLOCK.get());
         dropSelf(ModBlocks.MAGIC_BLOCK.get());
+        dropSelf(ModBlocks.LAMP_BLOCK.get());
 
-
+        dropSelf(ModBlocks.HONEYCOMB_STAIRS.get());
+        dropSelf(ModBlocks.HONEYCOMB_TRAPDOOR.get());
+        add(ModBlocks.HONEYCOMB_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.HONEYCOMB_SLAB.get())
+        );
     }
 
 

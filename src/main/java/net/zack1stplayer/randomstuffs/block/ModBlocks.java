@@ -2,14 +2,15 @@ package net.zack1stplayer.randomstuffs.block;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
+import net.zack1stplayer.randomstuffs.block.custom.LampBlock;
 import net.zack1stplayer.randomstuffs.block.custom.MagicBlock;
 import net.zack1stplayer.randomstuffs.item.ModItems;
 
@@ -32,6 +33,28 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.AMETHYST_CLUSTER)
                     .mapColor(MapColor.COLOR_MAGENTA)
+            ));
+
+    public static final DeferredBlock<Block> LAMP_BLOCK = registerBlock("lamp_block",
+            () -> new LampBlock(BlockBehaviour.Properties.of()
+                    .strength(2f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.LANTERN)
+                    .lightLevel(state -> state.getValue(LampBlock.CLICKED) ? 15 : 0)
+            ));
+
+
+    public static final DeferredBlock<StairBlock> HONEYCOMB_STAIRS = registerBlock("honeycomb_stairs",
+            () -> new StairBlock(Blocks.HONEYCOMB_BLOCK.defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK)
+            ));
+    public static final DeferredBlock<SlabBlock> HONEYCOMB_SLAB = registerBlock("honeycomb_slab",
+            () -> new SlabBlock(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK)
+            ));
+    public static final DeferredBlock<TrapDoorBlock> HONEYCOMB_TRAPDOOR = registerBlock("honeycomb_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.OAK,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK)
             ));
 
 

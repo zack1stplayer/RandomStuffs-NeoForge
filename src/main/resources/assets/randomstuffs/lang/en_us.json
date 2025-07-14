@@ -5,6 +5,11 @@
 
   "block.randomstuffs.test_block": "Test Block",
   "block.randomstuffs.magic_block": "Magic Block",
+  "block.randomstuffs.lamp_block": "Lamp Block",
+
+  "block.randomstuffs.honeycomb_slab": "Honeycomb Slab",
+  "block.randomstuffs.honeycomb_stairs": "Honeycomb Stairs",
+  "block.randomstuffs.honeycomb_trapdoor": "Honeycomb Trapdoor",
 
   "item.randomstuffs.example_item": "Example Item",
 
