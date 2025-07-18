@@ -7,6 +7,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
 import net.zack1stplayer.randomstuffs.block.ModBlocks;
 import net.zack1stplayer.randomstuffs.item.ModItems;
@@ -53,6 +54,10 @@ public class ModRecipeProvider extends RecipeProvider {
         slab(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.HONEYCOMB_SLAB.get(), Blocks.HONEYCOMB_BLOCK);
         trapdoorBuilder(ModBlocks.HONEYCOMB_TRAPDOOR.get(), Ingredient.of(Blocks.HONEYCOMB_BLOCK))
                 .group("honeycomb").unlockedBy("has_honeycomb", has(Blocks.HONEYCOMB_BLOCK)).save(recipeOutput);
+
+//        TOOLS
+        toolSuiteBuilder(recipeOutput, ModItems.TEST_ITEM.get(), ModItems.TEST_SWORD.get(), ModItems.TEST_PICKAXE.get(),
+                ModItems.TEST_SHOVEL.get(), ModItems.TEST_AXE.get(), ModItems.TEST_HOE.get());
     }
 
 
@@ -69,11 +74,59 @@ public class ModRecipeProvider extends RecipeProvider {
                 pExperience, pCookingTime, pGroup, "_from_blasting");
     }
 
-    protected  static <T extends AbstractCookingRecipe> void oreCooking(RecipeOutput recipeOutput, RecipeSerializer<T> pCookingSerializer, AbstractCookingRecipe.Factory<T> factory,
+    protected static <T extends AbstractCookingRecipe> void oreCooking(RecipeOutput recipeOutput, RecipeSerializer<T> pCookingSerializer, AbstractCookingRecipe.Factory<T> factory,
                                                                         List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {
         for(ItemLike itemlike : pIngredients) {
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime, pCookingSerializer, factory).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(recipeOutput, RandomStuffs.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
+    }
+
+    private static void toolSuiteBuilder (RecipeOutput recipeOutput, ItemLike ingredient, ItemLike swordOut,
+                                          ItemLike pickaxeOut, ItemLike shovelOut, ItemLike axeOut, ItemLike hoeOut) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, swordOut)
+                .pattern("T")
+                .pattern("T")
+                .pattern("s")
+                .define('T', ingredient)
+                .define('s', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_" + getItemName(ingredient), has(ingredient))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pickaxeOut)
+                .pattern("TTT")
+                .pattern(" s ")
+                .pattern(" s ")
+                .define('T', ingredient)
+                .define('s', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_" + getItemName(ingredient), has(ingredient))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, shovelOut)
+                .pattern("T")
+                .pattern("s")
+                .pattern("s")
+                .define('T', ingredient)
+                .define('s', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_" + getItemName(ingredient), has(ingredient))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, axeOut)
+                .pattern("TT")
+                .pattern("Ts")
+                .pattern(" s")
+                .define('T', ingredient)
+                .define('s', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_" + getItemName(ingredient), has(ingredient))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, hoeOut)
+                .pattern("TT")
+                .pattern(" s")
+                .pattern(" s")
+                .define('T', ingredient)
+                .define('s', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_" + getItemName(ingredient), has(ingredient))
+                .save(recipeOutput);
     }
 }
