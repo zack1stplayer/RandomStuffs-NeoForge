@@ -7,6 +7,7 @@ import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
 import net.zack1stplayer.randomstuffs.block.ModBlocks;
+import net.zack1stplayer.randomstuffs.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -21,6 +22,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.TEST_BLOCK.get())
                 .add(ModBlocks.MAGIC_BLOCK.get())
+                .add(ModBlocks.LAMP_BLOCK.get())
         ;
 
         tag(BlockTags.NEEDS_IRON_TOOL)
@@ -29,6 +31,15 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.MAGIC_BLOCK.get())
+        ;
+
+//        TOOLS
+        tag(ModTags.Blocks.NEEDS_TEST_TOOL)
+                .addTag(BlockTags.NEEDS_IRON_TOOL)
+        ;
+        tag(ModTags.Blocks.INCORRECT_FOR_TEST_TOOL)
+                .addTag(BlockTags.INCORRECT_FOR_IRON_TOOL)
+                .remove(ModTags.Blocks.NEEDS_TEST_TOOL)
         ;
     }
 }

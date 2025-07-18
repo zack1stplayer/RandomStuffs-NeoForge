@@ -32,6 +32,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.HONEYCOMB_STAIRS);
                         output.accept(ModBlocks.HONEYCOMB_SLAB);
                         output.accept(ModBlocks.HONEYCOMB_TRAPDOOR);
+
+//                        TOOLS
+                        output.accept(ModItems.TEST_SWORD);
+                        output.accept(ModItems.TEST_PICKAXE);
+                        output.accept(ModItems.TEST_SHOVEL);
+                        output.accept(ModItems.TEST_AXE);
+                        output.accept(ModItems.TEST_HOE);
                     }))
                     .build()
     );

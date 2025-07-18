@@ -10,7 +10,8 @@ import net.zack1stplayer.randomstuffs.RandomStuffs;
 
 public class ModTags {
     public static class Blocks {
-
+        public static TagKey<Block> NEEDS_TEST_TOOL = createTag("needs_test_tool");
+        public static TagKey<Block> INCORRECT_FOR_TEST_TOOL = createTag("incorrect_for_test_tool");
 
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, name));

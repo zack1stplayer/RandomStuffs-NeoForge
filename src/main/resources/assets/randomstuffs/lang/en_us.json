@@ -3,6 +3,14 @@
   "item.randomstuffs.chisel": "Chisel",
   "item.randomstuffs.charged_coal": "Charged Coal",
 
+
+  "item.randomstuffs.test_sword": "Test Sword",
+  "item.randomstuffs.test_pickaxe": "Test Pickaxe",
+  "item.randomstuffs.test_shovel": "Test Shovel",
+  "item.randomstuffs.test_axe": "Test Axe",
+  "item.randomstuffs.test_hoe": "Test Hoe",
+
+
   "block.randomstuffs.test_block": "Test Block",
   "block.randomstuffs.magic_block": "Magic Block",
   "block.randomstuffs.lamp_block": "Lamp Block",
