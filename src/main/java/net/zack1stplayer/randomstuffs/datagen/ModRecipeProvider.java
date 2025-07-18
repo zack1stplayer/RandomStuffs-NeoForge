@@ -129,4 +129,5 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_" + getItemName(ingredient), has(ingredient))
                 .save(recipeOutput);
     }
+
 }
