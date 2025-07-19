@@ -49,6 +49,8 @@ public class ModRecipeProvider extends RecipeProvider {
         oreSmelting(recipeOutput, TEST_SMELTABLES, RecipeCategory.MISC, ModItems.EXAMPLE_ITEM.get(), 0.25f, 200, "test");
         oreBlasting(recipeOutput, TEST_SMELTABLES, RecipeCategory.MISC, ModItems.EXAMPLE_ITEM.get(), 0.25f, 100, "test");
 
+
+//        BUILDING BLOCKS
         stairBuilder(ModBlocks.HONEYCOMB_STAIRS.get(), Ingredient.of(Blocks.HONEYCOMB_BLOCK))
                 .group("honeycomb").unlockedBy("has_honeycomb", has(Blocks.HONEYCOMB_BLOCK)).save(recipeOutput);
         slab(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.HONEYCOMB_SLAB.get(), Blocks.HONEYCOMB_BLOCK);

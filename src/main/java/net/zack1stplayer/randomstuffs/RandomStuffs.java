@@ -4,6 +4,7 @@ import net.zack1stplayer.randomstuffs.block.ModBlocks;
 import net.zack1stplayer.randomstuffs.component.ModDataComponents;
 import net.zack1stplayer.randomstuffs.item.ModCreativeModeTabs;
 import net.zack1stplayer.randomstuffs.item.ModItems;
+import net.zack1stplayer.randomstuffs.util.ModItemProperties;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -93,6 +94,8 @@ public class RandomStuffs {
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+
+            ModItemProperties.addCustomItemProperties();
         }
     }
 }

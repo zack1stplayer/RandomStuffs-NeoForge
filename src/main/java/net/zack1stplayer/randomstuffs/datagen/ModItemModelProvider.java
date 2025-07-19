@@ -5,6 +5,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -21,7 +23,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.TEST_ITEM.get());
         basicItem(ModItems.EXAMPLE_ITEM.get());
 
-        handheldItem(ModItems.CHISEL.get());
+        binaryHandheldItem(ModItems.CHISEL, "used");
         basicItem(ModItems.CHARGED_COAL.get());
 
 //        TOOLS
@@ -63,5 +65,16 @@ public class ModItemModelProvider extends ItemModelProvider {
 //                ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + item.getId().getPath())
 //        );
 //    }
+
+    private ItemModelBuilder binaryHandheldItem(DeferredItem<?> item, String propertyName) {
+        ModelFile overrideModel = withExistingParent(item.getId().getPath() + "_" + propertyName, ResourceLocation.parse("item/handheld"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + item.getId().getPath() + "_" + propertyName))
+        ;
+        return withExistingParent(item.getId().getPath(), ResourceLocation.parse("item/handheld"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + item.getId().getPath()))
+                .override().predicate(ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, propertyName), 1)
+                .model(overrideModel).end()
+        ;
+    }
 
 }
