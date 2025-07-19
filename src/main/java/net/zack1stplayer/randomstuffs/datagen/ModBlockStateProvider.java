@@ -19,8 +19,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        blockWithItem(ModBlocks.TEST_BLOCK);
-        blockWithItem(ModBlocks.MAGIC_BLOCK);
+        blockAllWithItem(ModBlocks.TEST_ORE);
+        blockAllWithItem(ModBlocks.DEEPSLATE_TEST_ORE);
+        blockAllWithItem(ModBlocks.TEST_BLOCK);
+        blockAllWithItem(ModBlocks.MAGIC_BLOCK);
 
         customLamp();
 
@@ -33,7 +35,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
 
-    private void blockWithItem(DeferredBlock<?> deferredBlock) {
+    private void blockAllWithItem(DeferredBlock<?> deferredBlock) {
         simpleBlockWithItem(deferredBlock.get(), cubeAll(deferredBlock.get()));
     }
 

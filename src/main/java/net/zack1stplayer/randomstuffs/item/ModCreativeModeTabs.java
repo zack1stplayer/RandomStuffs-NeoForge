@@ -23,12 +23,17 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.randomstuffs.items"))
                     .displayItems(((itemDisplayParameters, output) -> {
                         output.accept(ModItems.TEST_ITEM);
+                        output.accept(ModItems.RAW_TEST_ITEM);
                         output.accept(ModItems.EXAMPLE_ITEM);
                         output.accept(ModItems.CHISEL);
                         output.accept(ModItems.CHARGED_COAL);
+                        output.accept(ModBlocks.TEST_ORE);
+                        output.accept(ModBlocks.DEEPSLATE_TEST_ORE);
                         output.accept(ModBlocks.TEST_BLOCK);
                         output.accept(ModBlocks.MAGIC_BLOCK);
                         output.accept(ModBlocks.LAMP_BLOCK);
+
+
                         output.accept(ModBlocks.HONEYCOMB_STAIRS);
                         output.accept(ModBlocks.HONEYCOMB_SLAB);
                         output.accept(ModBlocks.HONEYCOMB_TRAPDOOR);

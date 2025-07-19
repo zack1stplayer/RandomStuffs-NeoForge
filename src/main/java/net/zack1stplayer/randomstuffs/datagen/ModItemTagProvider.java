@@ -23,6 +23,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         tag(ModTags.Items.TEST_TAG)
                 .add(ModItems.TEST_ITEM.get())
+                .add(ModItems.RAW_TEST_ITEM.get())
         ;
 
 

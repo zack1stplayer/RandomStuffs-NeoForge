@@ -12,7 +12,10 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(RandomStuffs.MOD_ID);
 
     public static final DeferredItem<Item> TEST_ITEM = ITEMS.registerItem("test_item",
-            Item::new, new Item.Properties().stacksTo(12)
+            Item::new, new Item.Properties()//.stacksTo(16)
+    );
+    public static final DeferredItem<Item> RAW_TEST_ITEM = ITEMS.registerItem("raw_test_item",
+            Item::new, new Item.Properties()
     );
 
     // Creates a new food item with the id "examplemod:example_id", nutrition 1 and saturation 2
