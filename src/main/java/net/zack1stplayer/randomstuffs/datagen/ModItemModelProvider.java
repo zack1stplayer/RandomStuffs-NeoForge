@@ -21,6 +21,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(ModItems.TEST_ITEM.get());
+        basicItem(ModItems.RAW_TEST_ITEM.get());
         basicItem(ModItems.EXAMPLE_ITEM.get());
 
         binaryHandheldItem(ModItems.CHISEL, "used");

@@ -3,6 +3,7 @@ package net.zack1stplayer.randomstuffs.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.DataMapProvider;
+import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
 import net.neoforged.neoforge.registries.datamaps.builtin.FurnaceFuel;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 import net.zack1stplayer.randomstuffs.item.ModItems;
@@ -17,6 +18,10 @@ public class ModDataMapProvider extends DataMapProvider {
     @Override
     protected void gather(HolderLookup.Provider provider) {
         this.builder(NeoForgeDataMaps.FURNACE_FUELS)    // burnTime 200 -> 1 item
-                .add(ModItems.CHARGED_COAL.getId(), new FurnaceFuel(3200), false);
+                .add(ModItems.CHARGED_COAL.getId(), new FurnaceFuel(3200), false)
+        ;
+        this.builder(NeoForgeDataMaps.COMPOSTABLES)
+                .add(ModItems.EXAMPLE_ITEM.getId(), new Compostable(0.15f), false)
+        ;
     }
 }

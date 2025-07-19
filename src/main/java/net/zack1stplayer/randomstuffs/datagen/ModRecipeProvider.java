@@ -22,7 +22,8 @@ public class ModRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
-        List<ItemLike> TEST_SMELTABLES = List.of(ModItems.TEST_ITEM, ModBlocks.TEST_BLOCK);
+        List<ItemLike> TEST_SMOKEABLES = List.of(ModItems.TEST_ITEM, ModBlocks.TEST_BLOCK);
+        List<ItemLike> TEST_SMELTABLES = List.of(ModItems.RAW_TEST_ITEM);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.TEST_BLOCK.get())
                 .pattern("TTT")
@@ -46,8 +47,10 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_test_block", has(ModBlocks.TEST_BLOCK))
                 .save(recipeOutput, "randomstuffs:test_item_from_test_block");
 
-        oreSmelting(recipeOutput, TEST_SMELTABLES, RecipeCategory.MISC, ModItems.EXAMPLE_ITEM.get(), 0.25f, 200, "test");
-        oreBlasting(recipeOutput, TEST_SMELTABLES, RecipeCategory.MISC, ModItems.EXAMPLE_ITEM.get(), 0.25f, 100, "test");
+
+        easyOreSmoking(recipeOutput, TEST_SMOKEABLES, ModItems.EXAMPLE_ITEM.get(), "test");
+        easyOreBlasting(recipeOutput, TEST_SMELTABLES, ModItems.TEST_ITEM.get(), "test");
+
 
 
 //        BUILDING BLOCKS
@@ -64,10 +67,17 @@ public class ModRecipeProvider extends RecipeProvider {
 
 
 
+
     protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
                                       float pExperience, int pCookingTime, String pGroup) {
         oreCooking(recipeOutput, RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new, pIngredients, pCategory, pResult,
                 pExperience, pCookingTime, pGroup, "_from_smelting");
+    }
+
+    protected static void oreSmoking(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
+                                     float pExperience, int pCookingTime, String pGroup) {
+        oreCooking(recipeOutput, RecipeSerializer.SMOKING_RECIPE, SmokingRecipe::new, pIngredients, pCategory, pResult,
+                pExperience, pCookingTime, pGroup, "_from_smoking");
     }
 
     protected static void oreBlasting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
@@ -82,6 +92,16 @@ public class ModRecipeProvider extends RecipeProvider {
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime, pCookingSerializer, factory).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(recipeOutput, RandomStuffs.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
+    }
+
+
+    protected static void easyOreSmoking(RecipeOutput recipeOutput, List<ItemLike> pIngredients, ItemLike pResult, String pGroup) {
+        oreSmelting(recipeOutput, pIngredients, RecipeCategory.MISC, pResult, 0.25f, 200, pGroup);
+        oreSmoking(recipeOutput, pIngredients, RecipeCategory.MISC, pResult, 0.25f, 100, pGroup);
+    }
+    protected static void easyOreBlasting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, ItemLike pResult, String pGroup) {
+        oreSmelting(recipeOutput, pIngredients, RecipeCategory.MISC, pResult, 0.25f, 200, pGroup);
+        oreBlasting(recipeOutput, pIngredients, RecipeCategory.MISC, pResult, 0.25f, 100, pGroup);
     }
 
     private static void toolSuiteBuilder (RecipeOutput recipeOutput, ItemLike ingredient, ItemLike swordOut,

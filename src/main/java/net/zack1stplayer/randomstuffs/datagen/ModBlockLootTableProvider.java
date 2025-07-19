@@ -15,6 +15,7 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.zack1stplayer.randomstuffs.block.ModBlocks;
+import net.zack1stplayer.randomstuffs.item.ModItems;
 
 import java.util.Set;
 
@@ -25,6 +26,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        createMultipleOreDrops(ModBlocks.TEST_ORE.get(), ModItems.RAW_TEST_ITEM.get(), 1, 3);
+        createMultipleOreDrops(ModBlocks.DEEPSLATE_TEST_ORE.get(), ModItems.RAW_TEST_ITEM.get(), 1, 3);
         dropSelf(ModBlocks.TEST_BLOCK.get());
         dropSelf(ModBlocks.MAGIC_BLOCK.get());
         dropSelf(ModBlocks.LAMP_BLOCK.get());

@@ -1,5 +1,6 @@
 {
   "item.randomstuffs.test_item": "Test Item",
+  "item.randomstuffs.raw_test_item": "Raw Test Item",
   "item.randomstuffs.chisel": "Chisel",
   "item.randomstuffs.charged_coal": "Charged Coal",
 
@@ -10,6 +11,9 @@
   "item.randomstuffs.test_axe": "Test Axe",
   "item.randomstuffs.test_hoe": "Test Hoe",
 
+
+  "block.randomstuffs.test_ore": "Test Ore",
+  "block.randomstuffs.deepslate_test_ore": "Deepslate Test Ore",
 
   "block.randomstuffs.test_block": "Test Block",
   "block.randomstuffs.magic_block": "Magic Block",
