@@ -32,11 +32,29 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.MAGIC_BLOCK.get());
         dropSelf(ModBlocks.LAMP_BLOCK.get());
 
+        // TREE BUILDING BLOCKS
+        dropSelf(ModBlocks.BLOODWOOD_LOG.get());
+        dropSelf(ModBlocks.STRIPPED_BLOODWOOD_LOG.get());
+        dropSelf(ModBlocks.BLOODWOOD_WOOD.get());
+        dropSelf(ModBlocks.STRIPPED_BLOODWOOD_WOOD.get());
+
+        add(ModBlocks.BLOODWOOD_LEAVES.get(), block ->
+                createLeavesDrops(block, ModBlocks.BLOODWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES)
+        );
+        dropSelf(ModBlocks.BLOODWOOD_SAPLING.get());
+
+        dropSelf(ModBlocks.BLOODWOOD_PLANKS.get());
+        dropSelf(ModBlocks.BLOODWOOD_STAIRS.get());
+        easySlabDrop(ModBlocks.BLOODWOOD_SLAB.get());
+        dropSelf(ModBlocks.BLOODWOOD_FENCE.get());
+        dropSelf(ModBlocks.BLOODWOOD_FENCE_GATE.get());
+        dropSelf(ModBlocks.BLOODWOOD_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.BLOODWOOD_BUTTON.get());
+
+        // VANILLA BUILDING BLOCKS
         dropSelf(ModBlocks.HONEYCOMB_STAIRS.get());
         dropSelf(ModBlocks.HONEYCOMB_TRAPDOOR.get());
-        add(ModBlocks.HONEYCOMB_SLAB.get(),
-                block -> createSlabItemTable(ModBlocks.HONEYCOMB_SLAB.get())
-        );
+        easySlabDrop(ModBlocks.HONEYCOMB_SLAB.get());
     }
 
 
@@ -51,6 +69,14 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     protected void easyMultiOreDrop(Block pBlock, Item item, float minDrops, float maxDrops) {
         add(pBlock, createMultipleOreDrops(pBlock, item, minDrops, maxDrops));
+    }
+
+    protected void easySlabDrop(Block pBlock) {
+        add(pBlock, block -> createSlabItemTable(pBlock));
+    }
+
+    protected void easyDoorDrop(Block block) {
+        add(block, this::createDoorTable);
     }
 
     @Override

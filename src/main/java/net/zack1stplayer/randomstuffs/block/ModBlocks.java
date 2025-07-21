@@ -1,12 +1,17 @@
 package net.zack1stplayer.randomstuffs.block;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -14,7 +19,12 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
 import net.zack1stplayer.randomstuffs.block.custom.LampBlock;
 import net.zack1stplayer.randomstuffs.block.custom.MagicBlock;
+import net.zack1stplayer.randomstuffs.block.custom.ModLogBlock;
+import net.zack1stplayer.randomstuffs.block.custom.burnables.BurnableBlock;
+import net.zack1stplayer.randomstuffs.block.custom.burnables.BurnableSlabBlock;
+import net.zack1stplayer.randomstuffs.block.custom.burnables.BurnableStairBlock;
 import net.zack1stplayer.randomstuffs.item.ModItems;
+import net.zack1stplayer.randomstuffs.worldgen.tree.ModTreeGrowers;
 
 import java.util.function.Supplier;
 
@@ -45,6 +55,7 @@ public class ModBlocks {
                     .mapColor(MapColor.COLOR_MAGENTA)
             ));
 
+
     public static final DeferredBlock<Block> MAGIC_BLOCK = registerBlock("magic_block",
             () -> new MagicBlock(BlockBehaviour.Properties.of()
                     .strength(2f)
@@ -62,6 +73,68 @@ public class ModBlocks {
             ));
 
 
+    // TREE BUILDING BLOCKS
+    public static final DeferredBlock<Block> BLOODWOOD_LOG = registerBlock("bloodwood_log",
+            () -> new ModLogBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)
+            ));
+    public static final DeferredBlock<Block> STRIPPED_BLOODWOOD_LOG = registerBlock("stripped_bloodwood_log",
+            () -> new ModLogBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG)
+            ));
+    public static final DeferredBlock<Block> BLOODWOOD_WOOD = registerBlock("bloodwood_wood",
+            () -> new ModLogBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)
+            ));
+    public static final DeferredBlock<Block> STRIPPED_BLOODWOOD_WOOD = registerBlock("stripped_bloodwood_wood",
+            () -> new ModLogBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)
+            ));
+
+    public static final DeferredBlock<Block> BLOODWOOD_LEAVES = registerBlock("bloodwood_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)) {
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return true;
+                }
+
+                @Override
+                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 30;
+                }
+
+                @Override
+                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 60;
+                }
+            }
+            );
+
+    public static final DeferredBlock<Block> BLOODWOOD_SAPLING = registerBlock("bloodwood_sapling",
+            () -> new SaplingBlock(ModTreeGrowers.BLOODWOOD, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)
+            ));
+
+    public static final DeferredBlock<Block> BLOODWOOD_PLANKS = registerBlock("bloodwood_planks",
+            () -> new BurnableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)
+            ));
+    public static final DeferredBlock<StairBlock> BLOODWOOD_STAIRS = registerBlock("bloodwood_stairs",
+            () -> new BurnableStairBlock(BLOODWOOD_PLANKS.get().defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS)
+            ));
+    public static final DeferredBlock<SlabBlock> BLOODWOOD_SLAB = registerBlock("bloodwood_slab",
+            () -> new BurnableSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB)
+            ));
+    public static final DeferredBlock<FenceBlock> BLOODWOOD_FENCE = registerBlock("bloodwood_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE)
+            ));
+    public static final DeferredBlock<FenceGateBlock> BLOODWOOD_FENCE_GATE = registerBlock("bloodwood_fence_gate",
+            () -> new FenceGateBlock(WoodType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)
+            ));
+    public static final DeferredBlock<PressurePlateBlock> BLOODWOOD_PRESSURE_PLATE = registerBlock("bloodwood_pressure_plate",
+            () -> new PressurePlateBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)
+            ));
+    public static final DeferredBlock<ButtonBlock> BLOODWOOD_BUTTON = registerBlock("bloodwood_button",
+            () -> new ButtonBlock(BlockSetType.OAK, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON) //.noCollission()
+            ));
+
+
+    // VANILLA BUILDING BLOCKS
     public static final DeferredBlock<StairBlock> HONEYCOMB_STAIRS = registerBlock("honeycomb_stairs",
             () -> new StairBlock(Blocks.HONEYCOMB_BLOCK.defaultBlockState(),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK)
@@ -72,7 +145,7 @@ public class ModBlocks {
             ));
     public static final DeferredBlock<TrapDoorBlock> HONEYCOMB_TRAPDOOR = registerBlock("honeycomb_trapdoor",
             () -> new TrapDoorBlock(BlockSetType.OAK,
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK)
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK).noOcclusion()
             ));
 
 

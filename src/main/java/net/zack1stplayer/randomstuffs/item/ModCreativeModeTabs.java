@@ -33,12 +33,29 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.MAGIC_BLOCK);
                         output.accept(ModBlocks.LAMP_BLOCK);
 
+                        // TREE BUILDING BLOCKS
+                        output.accept(ModBlocks.BLOODWOOD_LOG);
+                        output.accept(ModBlocks.STRIPPED_BLOODWOOD_LOG);
+                        output.accept(ModBlocks.BLOODWOOD_WOOD);
+                        output.accept(ModBlocks.STRIPPED_BLOODWOOD_WOOD);
 
+                        output.accept(ModBlocks.BLOODWOOD_LEAVES);
+                        output.accept(ModBlocks.BLOODWOOD_SAPLING);
+
+                        output.accept(ModBlocks.BLOODWOOD_PLANKS);
+                        output.accept(ModBlocks.BLOODWOOD_STAIRS);
+                        output.accept(ModBlocks.BLOODWOOD_SLAB);
+                        output.accept(ModBlocks.BLOODWOOD_FENCE);
+                        output.accept(ModBlocks.BLOODWOOD_FENCE_GATE);
+                        output.accept(ModBlocks.BLOODWOOD_PRESSURE_PLATE);
+                        output.accept(ModBlocks.BLOODWOOD_BUTTON);
+
+                        // VANILLA BUILDING BLOCKS
                         output.accept(ModBlocks.HONEYCOMB_STAIRS);
                         output.accept(ModBlocks.HONEYCOMB_SLAB);
                         output.accept(ModBlocks.HONEYCOMB_TRAPDOOR);
 
-//                        TOOLS
+                        // TOOLS
                         output.accept(ModItems.TEST_SWORD);
                         output.accept(ModItems.TEST_PICKAXE);
                         output.accept(ModItems.TEST_SHOVEL);

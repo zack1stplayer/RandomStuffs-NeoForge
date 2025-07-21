@@ -4,6 +4,7 @@
   "item.randomstuffs.chisel": "Chisel",
   "item.randomstuffs.charged_coal": "Charged Coal",
 
+  "item.randomstuffs.example_item": "Example Item",
 
   "item.randomstuffs.test_sword": "Test Sword",
   "item.randomstuffs.test_pickaxe": "Test Pickaxe",
@@ -19,21 +20,29 @@
   "block.randomstuffs.magic_block": "Magic Block",
   "block.randomstuffs.lamp_block": "Lamp Block",
 
+  "block.randomstuffs.bloodwood_log": "Bloodwood Log",
+  "block.randomstuffs.stripped_bloodwood_log": "Stripped Bloodwood Log",
+  "block.randomstuffs.bloodwood_wood": "Bloodwood Wood",
+  "block.randomstuffs.stripped_bloodwood_wood": "Stripped Bloodwood Wood",
+  "block.randomstuffs.bloodwood_leaves": "Bloodwood Leaves",
+  "block.randomstuffs.bloodwood_sapling": "Bloodwood Sapling",
+
+  "block.randomstuffs.bloodwood_planks": "Bloodwood Planks",
+  "block.randomstuffs.bloodwood_stairs": "Bloodwood Stairs",
+  "block.randomstuffs.bloodwood_slab": "Bloodwood Slab",
+  "block.randomstuffs.bloodwood_fence": "Bloodwood Fence",
+  "block.randomstuffs.bloodwood_fence_gate": "Bloodwood Fence Gate",
+  "block.randomstuffs.bloodwood_pressure_plate": "Bloodwood Pressure Plate",
+  "block.randomstuffs.bloodwood_button": "Bloodwood Button",
+
+
   "block.randomstuffs.honeycomb_slab": "Honeycomb Slab",
   "block.randomstuffs.honeycomb_stairs": "Honeycomb Stairs",
   "block.randomstuffs.honeycomb_trapdoor": "Honeycomb Trapdoor",
 
-  "item.randomstuffs.example_item": "Example Item",
 
   "creativetab.randomstuffs.items": "Random Stuffs",
 
-  "examplemod.configuration.title": "Example Mod Configs",
-  "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
-  "examplemod.configuration.section.examplemod.common.toml.title": "Example Mod Configs",
-  "examplemod.configuration.items": "Item List",
-  "examplemod.configuration.logDirtBlock": "Log Dirt Block",
-  "examplemod.configuration.magicNumberIntroduction": "Magic Number Text",
-  "examplemod.configuration.magicNumber": "Magic Number",
 
   "randomstuffs.configuration.title": "Random Stuffs Configs",
   "randomstuffs.configuration.section.randomstuffs.common.toml": "Random Stuffs Configs",

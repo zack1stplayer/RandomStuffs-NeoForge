@@ -20,6 +20,7 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> TEST_TAG = createTag("test_tag");
+        public static final TagKey<Item> BLOODWOOD_LOGS = createTag("bloodwood_logs");
 
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, name));

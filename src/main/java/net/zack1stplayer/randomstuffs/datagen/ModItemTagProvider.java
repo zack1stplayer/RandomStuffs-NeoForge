@@ -7,6 +7,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
+import net.zack1stplayer.randomstuffs.block.ModBlocks;
 import net.zack1stplayer.randomstuffs.item.ModItems;
 import net.zack1stplayer.randomstuffs.util.ModTags;
 import org.jetbrains.annotations.Nullable;
@@ -25,9 +26,25 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.TEST_ITEM.get())
                 .add(ModItems.RAW_TEST_ITEM.get())
         ;
+        tag(ModTags.Items.BLOODWOOD_LOGS)
+                .add(ModBlocks.BLOODWOOD_LOG.get().asItem())
+                .add(ModBlocks.STRIPPED_BLOODWOOD_LOG.get().asItem())
+                .add(ModBlocks.BLOODWOOD_WOOD.get().asItem())
+                .add(ModBlocks.STRIPPED_BLOODWOOD_WOOD.get().asItem())
+        ;
+
+        tag(ItemTags.LOGS_THAT_BURN)
+                .add(ModBlocks.BLOODWOOD_LOG.get().asItem())
+                .add(ModBlocks.STRIPPED_BLOODWOOD_LOG.get().asItem())
+                .add(ModBlocks.BLOODWOOD_WOOD.get().asItem())
+                .add(ModBlocks.STRIPPED_BLOODWOOD_WOOD.get().asItem())
+        ;
+        tag(ItemTags.PLANKS)
+                .add(ModBlocks.BLOODWOOD_PLANKS.get().asItem())
+        ;
 
 
-//        TOOL TAGS
+        // TOOL TAGS
         tag(ItemTags.SWORDS)
                 .add(ModItems.TEST_SWORD.get())
         ;
