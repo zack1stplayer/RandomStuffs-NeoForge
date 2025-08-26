@@ -1,9 +1,13 @@
 package net.zack1stplayer.randomstuffs;
 
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.zack1stplayer.randomstuffs.block.ModBlocks;
+import net.zack1stplayer.randomstuffs.block.entity.ModBlockEntities;
 import net.zack1stplayer.randomstuffs.component.ModDataComponents;
 import net.zack1stplayer.randomstuffs.item.ModCreativeModeTabs;
 import net.zack1stplayer.randomstuffs.item.ModItems;
+import net.zack1stplayer.randomstuffs.menu.ModMenuTypes;
+import net.zack1stplayer.randomstuffs.menu.custom.PotionDispenserScreen;
 import net.zack1stplayer.randomstuffs.util.ModItemProperties;
 import org.slf4j.Logger;
 
@@ -40,12 +44,15 @@ public class RandomStuffs {
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
         ModItems.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         ModCreativeModeTabs.register(modEventBus);
         // Register the Deferred Register to the mod event bus so components get registered
         ModDataComponents.register(modEventBus);
+
+        ModMenuTypes.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
@@ -95,6 +102,11 @@ public class RandomStuffs {
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 
             ModItemProperties.addCustomItemProperties();
+        }
+
+        @SubscribeEvent
+        public static void registerScreens(RegisterMenuScreensEvent event) {
+            event.register(ModMenuTypes.POTION_DISPENSER_MENU.get(), PotionDispenserScreen::new);
         }
     }
 }

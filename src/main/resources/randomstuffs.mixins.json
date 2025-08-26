@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "net.zack1stplayer.randomstuffs.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "PotionFluidHandlerMixin",
+    "FluidHelperMixin",
+    "GenericItemFillingMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "${mod_id}.refmap.json"
+}

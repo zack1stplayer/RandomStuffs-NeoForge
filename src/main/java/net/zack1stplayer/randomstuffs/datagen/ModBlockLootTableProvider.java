@@ -32,6 +32,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.MAGIC_BLOCK.get());
         dropSelf(ModBlocks.LAMP_BLOCK.get());
 
+        dropSelf(ModBlocks.POTION_DISPENSER.get());
+
         // TREE BUILDING BLOCKS
         dropSelf(ModBlocks.BLOODWOOD_LOG.get());
         dropSelf(ModBlocks.STRIPPED_BLOODWOOD_LOG.get());

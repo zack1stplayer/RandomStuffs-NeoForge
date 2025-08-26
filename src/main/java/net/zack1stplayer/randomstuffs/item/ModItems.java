@@ -1,12 +1,17 @@
 package net.zack1stplayer.randomstuffs.item;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
+import net.zack1stplayer.randomstuffs.component.ModDataComponents;
 import net.zack1stplayer.randomstuffs.item.custom.ChiselItem;
+import net.zack1stplayer.randomstuffs.item.custom.FlaskItem;
+import net.zack1stplayer.randomstuffs.item.custom.PotionFlaskItem;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(RandomStuffs.MOD_ID);
@@ -32,8 +37,16 @@ public class ModItems {
             Item::new, new Item.Properties().fireResistant()
     );
 
+    // POTION CONTAINER //TODO
+//    public static final DeferredItem<FlaskItem> GLASS_FLASK = ITEMS.registerItem("glass_flask",
+//            FlaskItem::new, new Item.Properties().stacksTo(1)
+//    );
+//    public static final DeferredItem<PotionFlaskItem> POTION_FLASK = ITEMS.registerItem("potion_flask",
+//            PotionFlaskItem::new, new Item.Properties().stacksTo(1)
+//    );
 
-//    TOOLS
+
+    // TOOLS
     public static final DeferredItem<SwordItem> TEST_SWORD = ITEMS.register("test_sword",
             () -> new SwordItem(ModToolTiers.TEST, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.TEST, 3, -2.4f)))

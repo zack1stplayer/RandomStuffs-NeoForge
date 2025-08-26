@@ -26,6 +26,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockAllWithItem(ModBlocks.MAGIC_BLOCK);
 
         customLamp();
+
+        quickHorizontalWithFront(ModBlocks.POTION_DISPENSER, "potion_dispenser");
         
         // TREE BUILDING BLOCKS
         easyLog(ModBlocks.BLOODWOOD_LOG);
@@ -170,5 +172,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private void easyTrapdoor(DeferredBlock<TrapDoorBlock> trapdoorBlock, Block textureBlock) {
         trapdoorBlock(trapdoorBlock.get(), blockTexture(textureBlock), true);
         blockItem(trapdoorBlock, "_bottom");
+    }
+
+    private void quickHorizontalWithFront(DeferredBlock<?> deferredBlock, String name) {
+        horizontalBlock(deferredBlock.get(), models().orientableWithBottom(
+                name,
+                ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "block/" + name + "_side"),
+                ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "block/" + name + "_front"),
+                ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "block/" + name + "_bottom"),
+                ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "block/" + name + "_top")
+        ));
+        blockItem(deferredBlock);
     }
 }

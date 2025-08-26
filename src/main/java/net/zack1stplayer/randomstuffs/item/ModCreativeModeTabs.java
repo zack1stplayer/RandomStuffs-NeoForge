@@ -27,20 +27,27 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.EXAMPLE_ITEM);
                         output.accept(ModItems.CHISEL);
                         output.accept(ModItems.CHARGED_COAL);
+
+//                        output.accept(ModItems.GLASS_FLASK);
+//                        output.accept(ModItems.POTION_FLASK);
+
+
                         output.accept(ModBlocks.TEST_ORE);
                         output.accept(ModBlocks.DEEPSLATE_TEST_ORE);
                         output.accept(ModBlocks.TEST_BLOCK);
                         output.accept(ModBlocks.MAGIC_BLOCK);
                         output.accept(ModBlocks.LAMP_BLOCK);
 
+                        output.accept(ModBlocks.POTION_DISPENSER);
+
                         // TREE BUILDING BLOCKS
+                        output.accept(ModBlocks.BLOODWOOD_SAPLING);
+                        output.accept(ModBlocks.BLOODWOOD_LEAVES);
                         output.accept(ModBlocks.BLOODWOOD_LOG);
                         output.accept(ModBlocks.STRIPPED_BLOODWOOD_LOG);
                         output.accept(ModBlocks.BLOODWOOD_WOOD);
                         output.accept(ModBlocks.STRIPPED_BLOODWOOD_WOOD);
 
-                        output.accept(ModBlocks.BLOODWOOD_LEAVES);
-                        output.accept(ModBlocks.BLOODWOOD_SAPLING);
 
                         output.accept(ModBlocks.BLOODWOOD_PLANKS);
                         output.accept(ModBlocks.BLOODWOOD_STAIRS);

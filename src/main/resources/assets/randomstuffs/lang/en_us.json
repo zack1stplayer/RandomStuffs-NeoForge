@@ -1,10 +1,14 @@
 {
+  "item.randomstuffs.example_item": "Example Item",
+
   "item.randomstuffs.test_item": "Test Item",
   "item.randomstuffs.raw_test_item": "Raw Test Item",
   "item.randomstuffs.chisel": "Chisel",
   "item.randomstuffs.charged_coal": "Charged Coal",
 
-  "item.randomstuffs.example_item": "Example Item",
+  "item.randomstuffs.glass_flask": "Glass Flask",
+  "item.randomstuffs.potion_flask": "Potion Flask",
+
 
   "item.randomstuffs.test_sword": "Test Sword",
   "item.randomstuffs.test_pickaxe": "Test Pickaxe",
@@ -19,6 +23,7 @@
   "block.randomstuffs.test_block": "Test Block",
   "block.randomstuffs.magic_block": "Magic Block",
   "block.randomstuffs.lamp_block": "Lamp Block",
+  "block.randomstuffs.potion_dispenser": "Potion Dispenser",
 
   "block.randomstuffs.bloodwood_log": "Bloodwood Log",
   "block.randomstuffs.stripped_bloodwood_log": "Stripped Bloodwood Log",
@@ -39,6 +44,9 @@
   "block.randomstuffs.honeycomb_slab": "Honeycomb Slab",
   "block.randomstuffs.honeycomb_stairs": "Honeycomb Stairs",
   "block.randomstuffs.honeycomb_trapdoor": "Honeycomb Trapdoor",
+
+
+  "container.randomstuffs.potion_dispenser": "Potion Dispenser",
 
 
   "creativetab.randomstuffs.items": "Random Stuffs",

@@ -1,7 +1,12 @@
 package net.zack1stplayer.randomstuffs.datagen;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.model.ModelLocationUtils;
+import net.minecraft.data.models.model.ModelTemplates;
+import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -12,6 +17,8 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
 import net.zack1stplayer.randomstuffs.block.ModBlocks;
 import net.zack1stplayer.randomstuffs.item.ModItems;
+
+import java.util.Objects;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -27,6 +34,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         binaryHandheldItem(ModItems.CHISEL, "used");
         basicItem(ModItems.CHARGED_COAL.get());
 
+        // POTION FLASKS
+//        basicItem(ModItems.GLASS_FLASK.get());
+//        generateItemWithOverlay(ModItems.POTION_FLASK);
+
+        // BLOCK ITEMS
         saplingItem(ModBlocks.BLOODWOOD_SAPLING);
 
         fenceItem(ModBlocks.BLOODWOOD_FENCE, ModBlocks.BLOODWOOD_PLANKS);
@@ -52,6 +64,18 @@ public class ModItemModelProvider extends ItemModelProvider {
         ;
     }
 
+    private void generateItemWithOverlay(Item item) {
+        String path = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item)).getPath();
+        this.withExistingParent(path, ResourceLocation.parse("item/generated"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + path + "_overlay"))
+                .texture("layer1", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + path))
+        ;
+    }
+    private void generateItemWithOverlay(DeferredItem<?> item) {
+        generateItemWithOverlay(item.get());
+    }
+
+
     private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.parse("item/generated")).texture("layer0",
@@ -59,20 +83,19 @@ public class ModItemModelProvider extends ItemModelProvider {
         ;
     }
 
-
-    public void buttonItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
+    private void buttonItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
         this.withExistingParent(block.getId().getPath(), mcLoc("block/button_inventory"))
                 .texture("texture",  ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID,
                         "block/" + baseBlock.getId().getPath()));
     } // buttonInventory(name, resourceLocation)
 
-    public void fenceItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
+    private void fenceItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
         this.withExistingParent(block.getId().getPath(), mcLoc("block/fence_inventory"))
                 .texture("texture",  ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID,
                         "block/" + baseBlock.getId().getPath()));
     } // fenceInventory(name, resourceLocation)
 
-    public void wallItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
+    private void wallItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
         this.withExistingParent(block.getId().getPath(), mcLoc("block/wall_inventory"))
                 .texture("wall",  ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID,
                         "block/" + baseBlock.getId().getPath()));

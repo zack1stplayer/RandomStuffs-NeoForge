@@ -42,6 +42,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.TEST_BLOCK.get())
                 .add(ModBlocks.MAGIC_BLOCK.get())
                 .add(ModBlocks.LAMP_BLOCK.get())
+                .add(ModBlocks.POTION_DISPENSER.get())
         ;
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
         ;

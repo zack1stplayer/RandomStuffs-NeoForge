@@ -20,6 +20,7 @@ import net.zack1stplayer.randomstuffs.RandomStuffs;
 import net.zack1stplayer.randomstuffs.block.custom.LampBlock;
 import net.zack1stplayer.randomstuffs.block.custom.MagicBlock;
 import net.zack1stplayer.randomstuffs.block.custom.ModLogBlock;
+import net.zack1stplayer.randomstuffs.block.custom.PotionDispenserBlock;
 import net.zack1stplayer.randomstuffs.block.custom.burnables.BurnableBlock;
 import net.zack1stplayer.randomstuffs.block.custom.burnables.BurnableSlabBlock;
 import net.zack1stplayer.randomstuffs.block.custom.burnables.BurnableStairBlock;
@@ -70,6 +71,16 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.LANTERN)
                     .lightLevel(state -> state.getValue(LampBlock.CLICKED) ? 15 : 0)
+            ));
+
+
+    // BLOCK ENTITIES
+    public static final DeferredBlock<Block> POTION_DISPENSER = registerBlock("potion_dispenser",
+            () -> new PotionDispenserBlock(BlockBehaviour.Properties.of()
+                    .strength(2f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.COPPER)
+                    .mapColor(MapColor.COLOR_ORANGE)
             ));
 
 
