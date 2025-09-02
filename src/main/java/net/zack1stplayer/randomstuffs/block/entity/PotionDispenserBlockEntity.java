@@ -1,5 +1,6 @@
 package net.zack1stplayer.randomstuffs.block.entity;
 
+import com.simibubi.create.content.fluids.potion.PotionFluid;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -8,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -17,18 +19,24 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import net.zack1stplayer.randomstuffs.menu.custom.PotionDispenserMenu;
 import org.jetbrains.annotations.Nullable;
 
 public class PotionDispenserBlockEntity extends BaseContainerBlockEntity {
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
+    private static final int FLUID_TANK_CAPACITY = 2000;
 
     private int progress = 0;
     private int maxProgress = 60;
 
     protected NonNullList<ItemStack> items;
     protected ContainerData dataAccess;
+
+    protected FluidTank tankInventory;
 
     public PotionDispenserBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.POTION_DISPENSER_BE.get(), pos, blockState);
@@ -53,9 +61,23 @@ public class PotionDispenserBlockEntity extends BaseContainerBlockEntity {
 
             @Override
             public int getCount() {
-                return 2;
+                return 4;
             }
         };
+        this.tankInventory = new FluidTank(FLUID_TANK_CAPACITY, (fluidStack) -> fluidStack.getFluid() instanceof PotionFluid) {
+            @Override
+            protected void onContentsChanged() {
+                setChanged();
+                sendData();
+            }
+        };
+    }
+
+    public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK,
+                ModBlockEntities.POTION_DISPENSER_BE.get(),
+                (be, context) -> be.tankInventory
+        );
     }
 
     @Override
@@ -87,6 +109,8 @@ public class PotionDispenserBlockEntity extends BaseContainerBlockEntity {
         ContainerHelper.loadAllItems(tag, this.items, registries);
         this.progress = tag.getInt("potion_dispenser.progress");
         this.maxProgress = tag.getInt("potion_dispenser.max_progress");
+        //tankInventory.readFromNBT(registries, compound.getCompound("TankContent"));
+        this.tankInventory.readFromNBT(registries, tag.getCompound("potion_dispenser.tank_content"));
     }
 
     @Override
@@ -95,7 +119,10 @@ public class PotionDispenserBlockEntity extends BaseContainerBlockEntity {
         ContainerHelper.saveAllItems(tag, this.items, registries);
         tag.putInt("potion_dispenser.progress", this.progress);
         tag.putInt("potion_dispenser.max_progress", this.maxProgress);
+        //compound.put("TankContent", tankInventory.writeToNBT(registries, new CompoundTag()));
+        tag.put("potion_dispenser.tank_content", tankInventory.writeToNBT(registries, new CompoundTag()));
     }
+
 
     @Override
     public int getContainerSize() {
@@ -126,6 +153,11 @@ public class PotionDispenserBlockEntity extends BaseContainerBlockEntity {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
+    public void sendData() {
+        if (level instanceof ServerLevel serverLevel)
+            serverLevel.getChunkSource().blockChanged(getBlockPos());
+    }
+
 
     public void serverTick(Level level, BlockPos blockPos, BlockState blockState) {
         if (isOutputEmpty() && canFill()) {
@@ -143,7 +175,7 @@ public class PotionDispenserBlockEntity extends BaseContainerBlockEntity {
 
 
     private boolean canFill() {
-        if (this.items.get(INPUT_SLOT).isEmpty()) {
+        if (this.items.get(INPUT_SLOT).isEmpty() || this.tankInventory.isEmpty()) {
             return false;
         }
         return this.items.get(INPUT_SLOT).getItem() == Items.BUCKET;
@@ -170,4 +202,19 @@ public class PotionDispenserBlockEntity extends BaseContainerBlockEntity {
     private void resetProgress() {
         this.progress = 0;
     }
+
+
+    public FluidTank getTankInventory() {
+        return this.tankInventory;
+    }
+
+
+    //    public int getPotionFluidColor() {
+//        if (this.tankInventory.isEmpty()) {
+////            return FastColor.ARGB32.color(198,198, 198);
+//            return PotionContents.EMPTY.getColor();
+//        } else {
+//            return this.tankInventory.getFluid().getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY).getColor();
+//        }
+//    }
 }

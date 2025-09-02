@@ -1,8 +1,10 @@
 package net.zack1stplayer.randomstuffs;
 
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.zack1stplayer.randomstuffs.block.ModBlocks;
 import net.zack1stplayer.randomstuffs.block.entity.ModBlockEntities;
+import net.zack1stplayer.randomstuffs.block.entity.PotionDispenserBlockEntity;
 import net.zack1stplayer.randomstuffs.component.ModDataComponents;
 import net.zack1stplayer.randomstuffs.item.ModCreativeModeTabs;
 import net.zack1stplayer.randomstuffs.item.ModItems;
@@ -107,6 +109,14 @@ public class RandomStuffs {
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.POTION_DISPENSER_MENU.get(), PotionDispenserScreen::new);
+        }
+    }
+
+    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+    public static class CommonModEvents {
+        @SubscribeEvent
+        public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+            PotionDispenserBlockEntity.registerCapabilities(event);
         }
     }
 }

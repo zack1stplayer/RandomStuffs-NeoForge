@@ -1,12 +1,17 @@
 package net.zack1stplayer.randomstuffs.menu.custom;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.createmod.catnip.gui.UIRenderHelper;
+import net.createmod.catnip.platform.NeoForgeCatnipServices;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
 
 public class PotionDispenserScreen extends AbstractContainerScreen<PotionDispenserMenu> {
@@ -31,6 +36,7 @@ public class PotionDispenserScreen extends AbstractContainerScreen<PotionDispens
         guiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
         renderProgressArrow(guiGraphics, x, y);
+        renderFluidContent(guiGraphics, x, y);
     }
 
     @Override
@@ -44,5 +50,21 @@ public class PotionDispenserScreen extends AbstractContainerScreen<PotionDispens
             guiGraphics.blit(ARROW_PROGRESS_TEXTURE, x + 73, y + 35, 0, 0,
                     menu.getScaledArrowProgress(), 16, 24, 16);
         }
+    }
+
+    private void renderFluidContent(GuiGraphics guiGraphics, int x, int y) {
+        PoseStack matrixStack = guiGraphics.pose();
+        matrixStack.pushPose();
+        matrixStack.translate(x + 9, y + 65, 100);
+        UIRenderHelper.flipForGuiRender(matrixStack);
+        matrixStack.scale(16, 16, 16);
+        FluidStack fluidStack = menu.getTankFluid();
+        NeoForgeCatnipServices.FLUID_RENDERER.renderFluidBox(fluidStack,
+                (0f / 16f), (0f / 16f), (0f),
+                (1f), (menu.getScaledTankLevel() / 16f), (0f),
+                guiGraphics.bufferSource(), matrixStack, LightTexture.FULL_BRIGHT,
+                false, false
+        );
+        matrixStack.popPose();
     }
 }
