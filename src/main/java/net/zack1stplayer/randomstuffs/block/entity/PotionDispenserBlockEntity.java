@@ -19,6 +19,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
@@ -61,10 +62,10 @@ public class PotionDispenserBlockEntity extends BaseContainerBlockEntity {
 
             @Override
             public int getCount() {
-                return 4;
+                return 2;
             }
         };
-        this.tankInventory = new FluidTank(FLUID_TANK_CAPACITY, (fluidStack) -> fluidStack.getFluid() instanceof PotionFluid) {
+        this.tankInventory = new FluidTank(FLUID_TANK_CAPACITY, (fluidStack) -> (fluidStack.getFluid() instanceof PotionFluid) || (fluidStack.is(Fluids.WATER))) {
             @Override
             protected void onContentsChanged() {
                 setChanged();
