@@ -1,8 +1,6 @@
 package net.zack1stplayer.randomstuffs;
 
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.FastColor;
-import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
