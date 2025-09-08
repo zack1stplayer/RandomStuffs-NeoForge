@@ -1,6 +1,10 @@
 package net.zack1stplayer.randomstuffs;
 
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.util.FastColor;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.zack1stplayer.randomstuffs.block.ModBlocks;
 import net.zack1stplayer.randomstuffs.block.entity.ModBlockEntities;
@@ -110,6 +114,16 @@ public class RandomStuffs {
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.POTION_DISPENSER_MENU.get(), PotionDispenserScreen::new);
+        }
+
+        @SubscribeEvent
+        public static void registerColorHandlerItems(RegisterColorHandlersEvent.Item event) {
+            event.register(
+                    (stack, p_329704_) -> p_329704_ > 0
+                            ? -1
+                            : FastColor.ARGB32.opaque(PotionFlaskItem.getOrDefaultPotionContents(stack).getColor()),
+                    ModItems.POTION_FLASK.get()
+            );
         }
     }
 

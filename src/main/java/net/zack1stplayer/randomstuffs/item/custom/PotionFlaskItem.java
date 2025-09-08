@@ -128,19 +128,20 @@ public class PotionFlaskItem extends Item {
         }
     }
 
-    @Override
-    public String getDescriptionId(ItemStack stack) {
-        return Potion.getName(((PotionContents)getOrDefaultPotionContents(stack)).potion(), this.getDescriptionId() + ".effect.");
-    }
+//    @Override
+//    public String getDescriptionId(ItemStack stack) {
+//        return Potion.getName(((PotionContents)getOrDefaultPotionContents(stack)).potion(), this.getDescriptionId() + ".effect.");
+//    }
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         PotionContents potioncontents = getPotionContents(stack);
         if (potioncontents != null) {
             Objects.requireNonNull(tooltipComponents);
+            tooltipComponents.add(Component.translatable("tooltip.randomstuffs.potion_flask.fluid_content",
+                    getFluidHandler(stack).getFluidInTank(0).getAmount() / 250, FLUID_CAPACITY / 250));
             potioncontents.addPotionTooltip(tooltipComponents::add, 1.0F, context.tickRate());
         }
-        tooltipComponents.add(Component.translatable("tooltip.randomstuffs.potion_flask.fluid_content", getFluidHandler(stack).getFluidInTank(0).getAmount(), FLUID_CAPACITY));
     }
 
     public static IFluidHandlerItem getFluidHandler(ItemStack stack) {

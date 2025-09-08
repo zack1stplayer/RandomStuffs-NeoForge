@@ -2,9 +2,6 @@ package net.zack1stplayer.randomstuffs.datagen;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.models.model.ModelLocationUtils;
-import net.minecraft.data.models.model.ModelTemplates;
-import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -35,7 +32,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.CHARGED_COAL.get());
 
         // POTION FLASK
-        generateItemWithOverlay(ModItems.POTION_FLASK);
+//        generateItemWithOverlay(ModItems.POTION_FLASK);
+        generateBinaryItemWithToggleOverlay(ModItems.POTION_FLASK, "empty");
 
         // BLOCK ITEMS
         saplingItem(ModBlocks.BLOODWOOD_SAPLING);
@@ -53,11 +51,12 @@ public class ModItemModelProvider extends ItemModelProvider {
 
 
     private ItemModelBuilder binaryHandheldItem(DeferredItem<?> item, String propertyName) {
-        ModelFile overrideModel = withExistingParent(item.getId().getPath() + "_" + propertyName, ResourceLocation.parse("item/handheld"))
-                .texture("layer0", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + item.getId().getPath() + "_" + propertyName))
+        String path = item.getId().getPath();
+        ModelFile overrideModel = withExistingParent(path + "_" + propertyName, ResourceLocation.parse("item/handheld"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + path + "_" + propertyName))
         ;
-        return withExistingParent(item.getId().getPath(), ResourceLocation.parse("item/handheld"))
-                .texture("layer0", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + item.getId().getPath()))
+        return withExistingParent(path, ResourceLocation.parse("item/handheld"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + path))
                 .override().predicate(ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, propertyName), 1)
                 .model(overrideModel).end()
         ;
@@ -65,13 +64,30 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     private void generateItemWithOverlay(Item item) {
         String path = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item)).getPath();
-        this.withExistingParent(path, ResourceLocation.parse("item/generated"))
+        withExistingParent(path, ResourceLocation.parse("item/generated"))
                 .texture("layer0", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + path + "_overlay"))
                 .texture("layer1", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + path))
         ;
     }
     private void generateItemWithOverlay(DeferredItem<?> item) {
         generateItemWithOverlay(item.get());
+    }
+
+    private void generateBinaryItemWithToggleOverlay(Item item, String propertyName) {
+        String path = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item)).getPath();
+
+        ModelFile overrideModel = withExistingParent(path + "_" + propertyName, ResourceLocation.parse("item/generated"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + path + "_" + propertyName))
+                .texture("layer1", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + path));
+
+        withExistingParent(path, ResourceLocation.parse("item/generated"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + path + "_overlay"))
+                .texture("layer1", ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, "item/" + path))
+                .override().predicate(ResourceLocation.fromNamespaceAndPath(RandomStuffs.MOD_ID, propertyName), 1)
+                .model(overrideModel).end();
+    }
+    private void generateBinaryItemWithToggleOverlay(DeferredItem<?> item, String propertyName) {
+        generateBinaryItemWithToggleOverlay(item.get(), propertyName);
     }
 
 
