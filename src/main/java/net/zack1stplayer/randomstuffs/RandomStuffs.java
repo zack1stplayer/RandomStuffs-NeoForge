@@ -8,6 +8,7 @@ import net.zack1stplayer.randomstuffs.block.entity.PotionDispenserBlockEntity;
 import net.zack1stplayer.randomstuffs.component.ModDataComponents;
 import net.zack1stplayer.randomstuffs.item.ModCreativeModeTabs;
 import net.zack1stplayer.randomstuffs.item.ModItems;
+import net.zack1stplayer.randomstuffs.item.custom.PotionFlaskItem;
 import net.zack1stplayer.randomstuffs.menu.ModMenuTypes;
 import net.zack1stplayer.randomstuffs.menu.custom.PotionDispenserScreen;
 import net.zack1stplayer.randomstuffs.util.ModItemProperties;
@@ -117,6 +118,8 @@ public class RandomStuffs {
         @SubscribeEvent
         public static void registerCapabilities(RegisterCapabilitiesEvent event) {
             PotionDispenserBlockEntity.registerCapabilities(event);
+            PotionFlaskItem.registerCapabilities(event);
+
         }
     }
 }

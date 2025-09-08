@@ -6,8 +6,9 @@
   "item.randomstuffs.chisel": "Chisel",
   "item.randomstuffs.charged_coal": "Charged Coal",
 
-  "item.randomstuffs.glass_flask": "Glass Flask",
-  "item.randomstuffs.potion_flask": "Potion Flask",
+  "item.randomstuffs.potion_flask.effect.empty": "Empty Potion Flask",
+
+  "tooltip.randomstuffs.potion_flask.fluid_content": "%s/%smB",
 
 
   "item.randomstuffs.test_sword": "Test Sword",
