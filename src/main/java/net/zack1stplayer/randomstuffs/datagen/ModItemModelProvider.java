@@ -34,9 +34,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         binaryHandheldItem(ModItems.CHISEL, "used");
         basicItem(ModItems.CHARGED_COAL.get());
 
-        // POTION FLASKS
-//        basicItem(ModItems.GLASS_FLASK.get());
-//        generateItemWithOverlay(ModItems.POTION_FLASK);
+        // POTION FLASK
+        generateItemWithOverlay(ModItems.POTION_FLASK);
 
         // BLOCK ITEMS
         saplingItem(ModBlocks.BLOODWOOD_SAPLING);

@@ -5,12 +5,12 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
 import net.zack1stplayer.randomstuffs.component.ModDataComponents;
 import net.zack1stplayer.randomstuffs.item.custom.ChiselItem;
-import net.zack1stplayer.randomstuffs.item.custom.FlaskItem;
 import net.zack1stplayer.randomstuffs.item.custom.PotionFlaskItem;
 
 public class ModItems {
@@ -37,13 +37,10 @@ public class ModItems {
             Item::new, new Item.Properties().fireResistant()
     );
 
-    // POTION CONTAINER //TODO
-//    public static final DeferredItem<FlaskItem> GLASS_FLASK = ITEMS.registerItem("glass_flask",
-//            FlaskItem::new, new Item.Properties().stacksTo(1)
-//    );
-//    public static final DeferredItem<PotionFlaskItem> POTION_FLASK = ITEMS.registerItem("potion_flask",
-//            PotionFlaskItem::new, new Item.Properties().stacksTo(1)
-//    );
+    // POTION CONTAINER
+    public static final DeferredItem<PotionFlaskItem> POTION_FLASK = ITEMS.registerItem("potion_flask",
+            PotionFlaskItem::new, new Item.Properties().stacksTo(1)
+    );
 
 
     // TOOLS

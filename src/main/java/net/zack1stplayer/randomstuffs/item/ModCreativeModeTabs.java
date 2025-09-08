@@ -1,14 +1,21 @@
 package net.zack1stplayer.randomstuffs.item;
 
+import com.simibubi.create.AllFluids;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
 import net.zack1stplayer.randomstuffs.block.ModBlocks;
+import net.zack1stplayer.randomstuffs.component.ModDataComponents;
 
 import java.util.function.Supplier;
 
@@ -28,8 +35,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CHISEL);
                         output.accept(ModItems.CHARGED_COAL);
 
-//                        output.accept(ModItems.GLASS_FLASK);
-//                        output.accept(ModItems.POTION_FLASK);
+                        output.accept(ModItems.POTION_FLASK.toStack());
 
 
                         output.accept(ModBlocks.TEST_ORE);

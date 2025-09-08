@@ -22,7 +22,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
+import net.zack1stplayer.randomstuffs.item.custom.PotionFlaskItem;
 import net.zack1stplayer.randomstuffs.menu.custom.PotionDispenserMenu;
 import org.jetbrains.annotations.Nullable;
 
@@ -130,19 +134,6 @@ public class PotionDispenserBlockEntity extends BaseContainerBlockEntity {
         return this.items.size();
     }
 
-    @Override
-    public boolean canPlaceItem(int slot, ItemStack stack) {
-        if (slot == OUTPUT_SLOT) {
-            return false;
-        }
-        else if (stack.getItem() == Items.BUCKET) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
 
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
@@ -179,7 +170,15 @@ public class PotionDispenserBlockEntity extends BaseContainerBlockEntity {
         if (this.items.get(INPUT_SLOT).isEmpty() || this.tankInventory.isEmpty()) {
             return false;
         }
-        return this.items.get(INPUT_SLOT).getItem() == Items.BUCKET;
+        ItemStack itemStack = this.items.get(INPUT_SLOT);
+        FluidStack fluidStack = this.tankInventory.getFluid();
+        if (itemStack.is(Items.BUCKET) && fluidStack.is(Fluids.WATER)) {
+            return fluidStack.getAmount() >= 1000;
+        }
+        if (itemStack.getItem() instanceof PotionFlaskItem && fluidStack.getFluid() instanceof PotionFluid) {
+            return PotionFlaskItem.getFluidHandler(itemStack).fill(fluidStack, IFluidHandler.FluidAction.SIMULATE) >= 250;
+        }
+        return false;
     }
 
     private boolean isOutputEmpty() {
@@ -195,7 +194,25 @@ public class PotionDispenserBlockEntity extends BaseContainerBlockEntity {
     }
 
     private void fillItem() {
-        ItemStack outItem = new ItemStack(Items.WATER_BUCKET);
+        ItemStack outItem = null;
+        ItemStack internalInput = this.items.get(INPUT_SLOT).copy();
+
+        if (internalInput.is(Items.BUCKET)) {
+            outItem = new ItemStack(Items.WATER_BUCKET);
+            this.tankInventory.drain(1000, IFluidHandler.FluidAction.EXECUTE);
+
+        } else if (internalInput.getItem() instanceof PotionFlaskItem) {
+            IFluidHandlerItem capability = PotionFlaskItem.getFluidHandler(internalInput);
+
+            capability.fill(this.tankInventory.drain(
+                    (capability.getTankCapacity(0) - capability.getFluidInTank(0).getAmount()),
+                    IFluidHandler.FluidAction.EXECUTE), IFluidHandler.FluidAction.EXECUTE);
+
+            outItem = internalInput.copy();
+        }
+        if (outItem == null) {
+            outItem = ItemStack.EMPTY;
+        }
         this.items.set(OUTPUT_SLOT, outItem);
         this.items.get(INPUT_SLOT).shrink(1);
     }
