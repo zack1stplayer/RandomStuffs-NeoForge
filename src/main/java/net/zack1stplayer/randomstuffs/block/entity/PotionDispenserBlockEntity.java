@@ -225,14 +225,4 @@ public class PotionDispenserBlockEntity extends BaseContainerBlockEntity {
     public FluidTank getTankInventory() {
         return this.tankInventory;
     }
-
-
-    //    public int getPotionFluidColor() {
-//        if (this.tankInventory.isEmpty()) {
-////            return FastColor.ARGB32.color(198,198, 198);
-//            return PotionContents.EMPTY.getColor();
-//        } else {
-//            return this.tankInventory.getFluid().getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY).getColor();
-//        }
-//    }
 }
