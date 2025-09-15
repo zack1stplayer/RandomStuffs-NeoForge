@@ -8,6 +8,7 @@
 
   "item.randomstuffs.potion_flask": "Potion Flask",
   "tooltip.randomstuffs.potion_flask.fluid_content": "%s/%s Charges",
+  "item.minecraft.potion.effect.combined_potion": "Combined Potion",
 
 
   "item.randomstuffs.test_sword": "Test Sword",
@@ -23,7 +24,9 @@
   "block.randomstuffs.test_block": "Test Block",
   "block.randomstuffs.magic_block": "Magic Block",
   "block.randomstuffs.lamp_block": "Lamp Block",
+
   "block.randomstuffs.potion_dispenser": "Potion Dispenser",
+  "block.randomstuffs.potion_combiner": "Potion Combiner",
 
   "block.randomstuffs.bloodwood_log": "Bloodwood Log",
   "block.randomstuffs.stripped_bloodwood_log": "Stripped Bloodwood Log",
@@ -47,6 +50,7 @@
 
 
   "container.randomstuffs.potion_dispenser": "Potion Dispenser",
+  "container.randomstuffs.potion_combiner": "Potion Combiner",
 
 
   "creativetab.randomstuffs.items": "Random Stuffs",

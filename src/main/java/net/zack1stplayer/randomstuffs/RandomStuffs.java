@@ -6,13 +6,16 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.zack1stplayer.randomstuffs.block.ModBlocks;
 import net.zack1stplayer.randomstuffs.block.entity.ModBlockEntities;
+import net.zack1stplayer.randomstuffs.block.entity.PotionCombinerBlockEntity;
 import net.zack1stplayer.randomstuffs.block.entity.PotionDispenserBlockEntity;
 import net.zack1stplayer.randomstuffs.component.ModDataComponents;
 import net.zack1stplayer.randomstuffs.item.ModCreativeModeTabs;
 import net.zack1stplayer.randomstuffs.item.ModItems;
 import net.zack1stplayer.randomstuffs.item.custom.PotionFlaskItem;
 import net.zack1stplayer.randomstuffs.menu.ModMenuTypes;
+import net.zack1stplayer.randomstuffs.menu.custom.PotionCombinerScreen;
 import net.zack1stplayer.randomstuffs.menu.custom.PotionDispenserScreen;
+import net.zack1stplayer.randomstuffs.potion.ModPotions;
 import net.zack1stplayer.randomstuffs.util.ModItemProperties;
 import org.slf4j.Logger;
 
@@ -47,15 +50,17 @@ public class RandomStuffs {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
-        // Register the Deferred Register to the mod event bus so blocks get registered
+
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
+
         ModItems.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
+
         ModCreativeModeTabs.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so components get registered
+
         ModDataComponents.register(modEventBus);
+
+        ModPotions.register(modEventBus);
 
         ModMenuTypes.register(modEventBus);
 
@@ -112,6 +117,7 @@ public class RandomStuffs {
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.POTION_DISPENSER_MENU.get(), PotionDispenserScreen::new);
+            event.register(ModMenuTypes.POTION_COMBINER_MENU.get(), PotionCombinerScreen::new);
         }
 
         @SubscribeEvent
@@ -130,6 +136,7 @@ public class RandomStuffs {
         @SubscribeEvent
         public static void registerCapabilities(RegisterCapabilitiesEvent event) {
             PotionDispenserBlockEntity.registerCapabilities(event);
+            PotionCombinerBlockEntity.registerCapabilities(event);
             PotionFlaskItem.registerCapabilities(event);
 
         }

@@ -17,10 +17,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
-import net.zack1stplayer.randomstuffs.block.custom.LampBlock;
-import net.zack1stplayer.randomstuffs.block.custom.MagicBlock;
-import net.zack1stplayer.randomstuffs.block.custom.ModLogBlock;
-import net.zack1stplayer.randomstuffs.block.custom.PotionDispenserBlock;
+import net.zack1stplayer.randomstuffs.block.custom.*;
 import net.zack1stplayer.randomstuffs.block.custom.burnables.BurnableBlock;
 import net.zack1stplayer.randomstuffs.block.custom.burnables.BurnableSlabBlock;
 import net.zack1stplayer.randomstuffs.block.custom.burnables.BurnableStairBlock;
@@ -77,6 +74,14 @@ public class ModBlocks {
     // BLOCK ENTITIES
     public static final DeferredBlock<Block> POTION_DISPENSER = registerBlock("potion_dispenser",
             () -> new PotionDispenserBlock(BlockBehaviour.Properties.of()
+                    .strength(2f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.COPPER)
+                    .mapColor(MapColor.COLOR_ORANGE)
+            ));
+
+    public static final DeferredBlock<Block> POTION_COMBINER = registerBlock("potion_combiner",
+            () -> new PotionCombinerBlock(BlockBehaviour.Properties.of()
                     .strength(2f)
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.COPPER)

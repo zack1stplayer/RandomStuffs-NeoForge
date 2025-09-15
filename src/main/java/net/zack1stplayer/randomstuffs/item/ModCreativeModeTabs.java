@@ -45,6 +45,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.LAMP_BLOCK);
 
                         output.accept(ModBlocks.POTION_DISPENSER);
+                        output.accept(ModBlocks.POTION_COMBINER);
 
                         // TREE BUILDING BLOCKS
                         output.accept(ModBlocks.BLOODWOOD_SAPLING);

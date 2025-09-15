@@ -19,6 +19,11 @@ public class ModBlockEntities {
                     PotionDispenserBlockEntity::new, ModBlocks.POTION_DISPENSER.get()).build(null)
             );
 
+    public static final Supplier<BlockEntityType<PotionCombinerBlockEntity>> POTION_COMBINER_BE =
+            BLOCK_ENTITIES.register("potion_combiner_be", () -> BlockEntityType.Builder.of(
+                    PotionCombinerBlockEntity::new, ModBlocks.POTION_COMBINER.get()).build(null)
+            );
+
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

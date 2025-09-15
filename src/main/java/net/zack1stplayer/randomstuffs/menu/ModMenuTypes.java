@@ -9,6 +9,7 @@ import net.neoforged.neoforge.network.IContainerFactory;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
+import net.zack1stplayer.randomstuffs.menu.custom.PotionCombinerMenu;
 import net.zack1stplayer.randomstuffs.menu.custom.PotionDispenserMenu;
 
 public class ModMenuTypes {
@@ -18,6 +19,9 @@ public class ModMenuTypes {
 
     public static final DeferredHolder<MenuType<?>, MenuType<PotionDispenserMenu>> POTION_DISPENSER_MENU =
             registerMenuType("potion_dispenser_menu", PotionDispenserMenu::new);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<PotionCombinerMenu>> POTION_COMBINER_MENU =
+            registerMenuType("potion_combiner_menu", PotionCombinerMenu::new);
 
 
     private static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
