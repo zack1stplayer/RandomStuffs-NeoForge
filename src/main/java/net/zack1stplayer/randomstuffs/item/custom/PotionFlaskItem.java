@@ -51,6 +51,11 @@ public class PotionFlaskItem extends Item {
                     }
 
                     @Override
+                    public boolean canFillFluidType(FluidStack fluid) {
+                        return isFluidValid(0, fluid);
+                    }
+
+                    @Override
                     protected void setContainerToEmpty() {
                         this.container.set(this.componentType, SimpleFluidContent.EMPTY);
                     }
