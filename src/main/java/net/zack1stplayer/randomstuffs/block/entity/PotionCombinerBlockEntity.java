@@ -1,7 +1,5 @@
 package net.zack1stplayer.randomstuffs.block.entity;
 
-import com.mojang.logging.LogUtils;
-import com.simibubi.create.AllFluids;
 import com.simibubi.create.content.fluids.potion.PotionFluid;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BehaviourType;
@@ -21,7 +19,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.Capabilities;
