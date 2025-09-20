@@ -81,7 +81,7 @@ public class PotionCombinerBlock extends BaseEntityBlock implements IBE<PotionCo
                 level.updateNeighbourForOutputSignal(pos, this);
             }
         }
-        super.onRemove(state, level, pos, newState, movedByPiston);
+        IBE.onRemove(state, level, pos, newState);
     }
 
     protected void openContainer(Level level, BlockPos pos, Player player) {
