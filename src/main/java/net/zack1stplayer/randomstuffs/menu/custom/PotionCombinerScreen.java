@@ -13,7 +13,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
-import org.joml.Matrix4f;
 
 public class PotionCombinerScreen extends AbstractContainerScreen<PotionCombinerMenu> {
     private static final ResourceLocation GUI_TEXTURE =
