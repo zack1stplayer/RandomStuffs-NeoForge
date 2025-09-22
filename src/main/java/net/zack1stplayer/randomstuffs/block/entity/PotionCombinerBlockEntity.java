@@ -1,10 +1,12 @@
 package net.zack1stplayer.randomstuffs.block.entity;
 
+import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.content.fluids.potion.PotionFluid;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BehaviourType;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
+import com.simibubi.create.foundation.fluid.CombinedTankWrapper;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -33,7 +35,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
-public class PotionCombinerBlockEntity extends SmartBlockEntity implements MenuProvider {
+public class PotionCombinerBlockEntity extends SmartBlockEntity implements MenuProvider, IHaveGoggleInformation {
 
     private static final int INPUT_TANKS_CAPACITY = 2000;
     private static final int OUTPUT_TANK_CAPACITY = 2000;
@@ -48,6 +50,7 @@ public class PotionCombinerBlockEntity extends SmartBlockEntity implements MenuP
     protected SmartFluidTankBehaviour outputTank;
 
     protected ContainerData dataAccess;
+    protected IFluidHandler combinedTankWrapper;
 
     public PotionCombinerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.POTION_COMBINER_BE.get(), pos, state);
@@ -90,6 +93,8 @@ public class PotionCombinerBlockEntity extends SmartBlockEntity implements MenuP
         behaviours.add(inTankLeft);
         behaviours.add(inTankRight);
         behaviours.add(outputTank);
+
+        combinedTankWrapper = new CombinedTankWrapper(outputTank.getCapability(), inTankLeft.getCapability(), inTankRight.getCapability());
     }
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -123,6 +128,11 @@ public class PotionCombinerBlockEntity extends SmartBlockEntity implements MenuP
     @Override
     public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
         return new PotionCombinerMenu(i, inventory, this, dataAccess);
+    }
+
+    @Override
+    public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+        return containedFluidTooltip(tooltip, isPlayerSneaking, this.combinedTankWrapper);
     }
 
     @Override
@@ -261,7 +271,7 @@ public class PotionCombinerBlockEntity extends SmartBlockEntity implements MenuP
             case 0 -> this.outputTank.getCapability();
             case 1 -> this.inTankLeft.getCapability();
             case 2 -> this.inTankRight.getCapability();
-            default -> this.outputTank.getCapability();
+            default -> this.combinedTankWrapper;
         };
     }
 }
