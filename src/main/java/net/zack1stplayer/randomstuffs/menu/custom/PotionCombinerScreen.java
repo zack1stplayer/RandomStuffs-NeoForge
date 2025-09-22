@@ -13,6 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.zack1stplayer.randomstuffs.RandomStuffs;
+import org.joml.Matrix4f;
 
 public class PotionCombinerScreen extends AbstractContainerScreen<PotionCombinerMenu> {
     private static final ResourceLocation GUI_TEXTURE =
@@ -51,16 +52,26 @@ public class PotionCombinerScreen extends AbstractContainerScreen<PotionCombiner
     }
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
+        PoseStack matrixStack = guiGraphics.pose();
+
         if (menu.isCrafting()) {
-            guiGraphics.blit(ARROW_PROGRESS_TEXTURE, x + 73, y + 35, 0, 0,
+            guiGraphics.blit(ARROW_PROGRESS_TEXTURE, x + 50, y + 34, 0, 0,
                     menu.getScaledArrowProgress(), 16, 24, 16);
+
+            // This is stupid, but it works.
+            matrixStack.pushPose();
+            matrixStack.translate(x + 126, y + 50, 100);
+            matrixStack.scale(-1, -1, 1);
+            guiGraphics.blit(ARROW_PROGRESS_TEXTURE, 0, 0, 0, 0,
+                    menu.getScaledArrowProgress(), 16, 24, -16);
+            matrixStack.popPose();
         }
     }
 
     private void renderFluidContent(GuiGraphics guiGraphics, int x, int y) {
         PoseStack matrixStack = guiGraphics.pose();
         matrixStack.pushPose();
-        matrixStack.translate(x + 9, y + 65, 100);
+        matrixStack.translate(x + 28, y + 65, 100);
         UIRenderHelper.flipForGuiRender(matrixStack);
         matrixStack.scale(16, 16, 16);
         FluidStack fluidStack = menu.getTankFluid(INLEFT_TANK_INDEX);
@@ -71,18 +82,30 @@ public class PotionCombinerScreen extends AbstractContainerScreen<PotionCombiner
                 false, false
         );
 
-        fluidStack = menu.getTankFluid(INRIGHT_TANK_INDEX);
+        matrixStack.popPose();
+
+        matrixStack.pushPose();
+        matrixStack.translate(x + 80, y + 65, 100);
+        UIRenderHelper.flipForGuiRender(matrixStack);
+        matrixStack.scale(16, 16, 16);
+        fluidStack = menu.getTankFluid(OUTPUT_TANK_INDEX);
         NeoForgeCatnipServices.FLUID_RENDERER.renderFluidBox(fluidStack,
-                (18f / 16f), (0f / 16f), (0f),
-                (34f / 16f), (menu.getScaledTankLevel(INRIGHT_TANK_INDEX) / 16f), (0f),
+                (0f / 16f), (0f / 16f), (0f),
+                (16f / 16f), (menu.getScaledTankLevel(OUTPUT_TANK_INDEX) / 16f), (0f),
                 guiGraphics.bufferSource(), matrixStack, LightTexture.FULL_BRIGHT,
                 false, false
         );
 
-        fluidStack = menu.getTankFluid(OUTPUT_TANK_INDEX);
+        matrixStack.popPose();
+
+        matrixStack.pushPose();
+        matrixStack.translate(x + 132, y + 65, 100);
+        UIRenderHelper.flipForGuiRender(matrixStack);
+        matrixStack.scale(16, 16, 16);
+        fluidStack = menu.getTankFluid(INRIGHT_TANK_INDEX);
         NeoForgeCatnipServices.FLUID_RENDERER.renderFluidBox(fluidStack,
-                (36f / 16f), (0f / 16f), (0f),
-                (52f / 16f), (menu.getScaledTankLevel(OUTPUT_TANK_INDEX) / 16f), (0f),
+                (0f / 16f), (0f / 16f), (0f),
+                (16f / 16f), (menu.getScaledTankLevel(INRIGHT_TANK_INDEX) / 16f), (0f),
                 guiGraphics.bufferSource(), matrixStack, LightTexture.FULL_BRIGHT,
                 false, false
         );
